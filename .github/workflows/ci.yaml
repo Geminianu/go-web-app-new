@@ -84,12 +84,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
+        ref: main     # or your target branch - by chatgpt-below line as well
+        fetch-depth: 0
         token: ${{ secrets.TOKEN }}
 
-    - name: Debug files in helm directory
+    - name: Debug current git info-chatgpt
       run: |
-        echo "Listing helm directory contents:"
-        ls -la helm/go-web-app-chart/    
+        git branch
+        git status
+        git log -1 --oneline
+        ls -la    
+
+    - name: Debug files in helm directory-added by chatgpt
+      run: |
+        echo "Listing helm directory contents:"   
+        ls -la helm/go-web-app-chart/      
 
     - name: Update tag in Helm chart
       run: |
