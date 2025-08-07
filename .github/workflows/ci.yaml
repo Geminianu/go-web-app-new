@@ -98,16 +98,16 @@ jobs:
     - name: Debug files in helm directory-added by chatgpt
       run: |
         echo "Listing helm directory contents:"   
-        ls -la helm/go-web-app-chart/      
+        ls -la helm/go-web-app-charts/      
 
     - name: Update tag in Helm chart
       run: |
-        sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-chart/values.yaml
+        sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-charts/values.yaml
 
     - name: Commit and push changes
       run: |
         git config --global user.email "anushapoojary3@gmail.com"
         git config --global user.name "Anusha"
-        git add helm/go-web-app-chart/values.yaml
+        git add helm/go-web-app-charts/values.yaml
         git commit -m "Update tag in Helm chart"
         git push
