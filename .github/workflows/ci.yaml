@@ -86,6 +86,11 @@ jobs:
       with:
         token: ${{ secrets.TOKEN }}
 
+    - name: Debug files in helm directory
+      run: |
+        echo "Listing helm directory contents:"
+        ls -la helm/go-web-app-chart/    
+
     - name: Update tag in Helm chart
       run: |
         sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-chart/values.yaml
